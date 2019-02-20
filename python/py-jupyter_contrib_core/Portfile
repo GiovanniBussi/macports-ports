@@ -1,0 +1,37 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim: fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           python 1.0
+
+name                py-jupyter_contrib_core
+version             0.3.3
+revision            0
+categories-append   textproc
+platforms           darwin
+license             BSD
+supported_archs     noarch
+
+python.versions     27 36 37
+
+maintainers         {gmail.com:giovanni.bussi @GiovanniBussi} openmaintainer
+
+description         Common utilities for jupyter-contrib projects.
+long_description    ${description}
+
+homepage            https://github.com/jupyter-contrib/jupyter_contrib_core
+master_sites        pypi:[string index ${python.rootname} 0]/${python.rootname}
+
+distname            ${python.rootname}-${version}
+
+checksums           rmd160  ca976b04736c96d1d9aa9391f147e9403f055390 \
+                    sha256  e65bc0e932ff31801003cef160a4665f2812efe26a53801925a634735e9a5794 \
+                    size    16695
+
+if {${name} ne ${subport}} {
+    depends_lib-append port:py${python.version}-jupyter_core \
+                       port:py${python.version}-notebook \
+                       port:py${python.version}-setuptools \
+                       port:py${python.version}-traitlets \
+                       port:py${python.version}-tornado
+    livecheck.type     none
+}
