@@ -1,0 +1,46 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim: fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           python 1.0
+
+name                py-jupyter_contrib_nbextensions
+version             0.5.1
+revision            0
+categories-append   textproc
+platforms           darwin
+license             BSD
+supported_archs     noarch
+
+python.versions     27 36 37
+
+maintainers         {gmail.com:giovanni.bussi @GiovanniBussi} openmaintainer
+
+description         Contains a collection of extensions that add functionality to the Jupyter notebook.
+long_description    ${description} These extensions are mostly written in Javascript, and are loaded locally in the browser.
+
+
+homepage            https://github.com/ipython-contrib/jupyter_contrib_nbextensions.git
+master_sites        pypi:[string index ${python.rootname} 0]/${python.rootname}
+
+distname            ${python.rootname}-${version}
+
+checksums           rmd160  946120e6213000bcf90f9f4fcdc51400e813ee5f \
+                    sha256  eecd28ecc2fc410226c0a3d4932ed2fac4860ccf8d9e9b1b29548835a35b22ab \
+                    size    20949576
+
+if {${name} ne ${subport}} {
+    depends_lib-append port:py${python.version}-ipython \
+                       port:py${python.version}-yaml \
+                       port:py${python.version}-lxml \
+                       port:py${python.version}-jupyter_contrib_core \
+                       port:py${python.version}-ipython_genutils \
+                       port:py${python.version}-jupyter_latex_envs \
+                       port:py${python.version}-tornado \
+                       port:py${python.version}-jupyter_highlight_selected_word \
+                       port:py${python.version}-notebook \
+                       port:py${python.version}-nbconvert \
+                       port:py${python.version}-traitlets \
+                       port:py${python.version}-jupyter_core \
+                       port:py${python.version}-jupyter_nbextensions_configurator
+    livecheck.type     none
+}
