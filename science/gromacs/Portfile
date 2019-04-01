@@ -11,8 +11,7 @@ PortGroup           linear_algebra 1.0
 
 name                gromacs
 # not all versions have patches available for plumed; subport's patch will fail if not there
-version             2016.5
-revision            1
+version             2018.6
 categories          science math
 license             LGPL-2.1
 maintainers         {dstrubbe @dstrubbe} openmaintainer
@@ -31,9 +30,10 @@ homepage            http://www.gromacs.org/
 master_sites        http://ftp.gromacs.org/pub/gromacs
 
 # md5 published at http://www.gromacs.org/Downloads
-checksums           rmd160  10d8808e8c5b04702d83f385f78c0d9effdfa266 \
-                    sha256  57db26c6d9af84710a1e0c47a1f5bf63a22641456448dcd2eeb556ebd14e0b7c \
-                    md5     f41807e5b2911ccb547a3fd11f105d47
+checksums           rmd160  ff24a1a31cbe8aa3b38f4657c2e7efe9d5476519 \
+                    sha256  94b0dbafe7b29a0fe509099caa4fc075e616eb0d6ab4a785c7072fd1b2c5aba0 \
+                    md5     997f2b8108197780d61b23b5eb05644a \
+                    size    29911431
 
 depends_build-append \
                     port:pkgconfig
@@ -113,7 +113,7 @@ subport gromacs-plumed {
 # override the choice setting the PLUMED_KERNEL environment variable.
 # Also notice that gromacs version is hardcoded here. Plumed patch is not always
 # updated when gromacs is.
-        exec ${prefix}/bin/plumed patch --mdroot=${worksrcpath} -e gromacs-2016.4 --runtime -p
+        exec ${prefix}/bin/plumed patch --mdroot=${worksrcpath} -e gromacs-2018.6 --runtime -p
     }
     notes "
 PLUMED is linked with runtime binding. By setting the environment variable PLUMED_KERNEL\
