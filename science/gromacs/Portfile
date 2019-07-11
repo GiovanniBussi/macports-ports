@@ -84,6 +84,7 @@ post-test {
 #NOTE: Regression tests have not been run. If you want to run them from the build system, get the correct version of the regression tests package and set REGRESSIONTEST_PATH in CMake to point to it, or set REGRESSIONTEST_DOWNLOAD=ON.
 
 subport gromacs-plumed {
+    revision       1
     description    ${description}: \
       (THIS PORT INSTALLS A VERSION OF GROMACS PATCHED WITH PLUMED)
     long_description    ${long_description}: \
