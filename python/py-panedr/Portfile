@@ -1,36 +1,25 @@
-# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim: fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
-
 PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-panedr
-version             0.5.2
+version             0.8.0
 revision            0
-categories-append   science
-platforms           {darwin any}
-license             LGPL-2.1+
+
+license             LGPL-2+
 supported_archs     noarch
-
-python.versions     312
-
+platforms           {darwin any}
 maintainers         {gmail.com:giovanni.bussi @GiovanniBussi} openmaintainer
+description         A library to read GROMACS edr binary XDR files and return a a pandas dataframe.
+long_description    {*}${description}
+homepage            https://github.com/MDAnalysis/panedr
 
-description         Panedr reads a Gromacs EDR file and returns its content as a pandas dataframe.
-long_description    {*}${description} \
-                    The library exposes one function—the edr_to_df function—that gets the path \
-                    to an EDR file and returns a pandas dataframe.
+checksums           rmd160  59452efcaba057968c672727333d1741a00dfeeb \
+                    sha256  50ecac36810d12db77903048b4972a234b6e3b2c122ffa2a158eba0ff69effc4 \
+                    size    17004
 
-homepage            https://github.com/jbarnoud/panedr
-
-checksums           rmd160  aab8bda18f35abdd33bde44e962c5b0c5cef2314 \
-                    sha256  45eb926a1176789998f041be4d2bea2ed5b70c6540cbaf8903d82473cfd886b2 \
-                    size    15642174
+python.versions     310 311 312 313 314
 
 if {${name} ne ${subport}} {
-    depends_lib-append      port:py${python.version}-pandas \
-                            port:py${python.version}-pbr
-
-    depends_test-append     port:py${python.version}-six
-
-    test.run                yes
+    depends_lib-append      port:py${python.version}-pyedr \
+                            port:py${python.version}-pandas
 }
